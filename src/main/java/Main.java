@@ -11,29 +11,33 @@ public class Main {
     }
 
 
-    public static int[] mergeSort(int[] a1, int[] a2, int[] a3) {
+    public static void mergeSort(int[] a1, int[] a2, int[] a3) {
         int i = 0;
         int j = 0;
-        for (int k = 0; k < a3.length; k++) {
+        int k = 0;
 
-            if (i > a1.length - 1) {
-                int a = a2[j];
-                a3[k] = a;
-                j++;
-            } else if (j > a2.length - 1) {
-                int a = a1[i];
-                a3[k] = a;
-                i++;
-            } else if (a1[i] < a2[j]) {
-                int a = a1[i];
-                a3[k] = a;
+        while (i < a1.length && j < a2.length) {
+            if (a1[i] <= a2[j]) {
+                a3[k] = a1[i];
                 i++;
             } else {
-                int b = a2[j];
-                a3[k] = b;
+                a3[k] = a2[j];
                 j++;
             }
+            k++;
         }
-        return a3;
+        while (i < a1.length) {
+            a3[k] = a1[i];
+            i++;
+            k++;
+        }
+        while (j < a2.length) {
+            a3[k] = a2[j];
+            j++;
+            k++;
+        }
     }
 }
+
+
+
